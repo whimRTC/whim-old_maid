@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Main class="main" />
-
     <Player
       v-for="user in $whim.users"
       :key="user.id"
