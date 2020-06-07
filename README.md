@@ -1,7 +1,7 @@
-# wh.im app template
+# wh.im Old Maid (ババ抜き)
 
 ## 概要
-wh.im上でアプリを動かすときのVue.jsによるテンプレートです。
+wh.im上でアプリを動かすときのVue.jsによるババ抜きです。
 
 ## 使い方
 クローンし、remoteを変更します
