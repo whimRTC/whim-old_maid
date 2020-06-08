@@ -34,14 +34,25 @@ export default {
     select(sideRight) {
       const jokerRight = this.$whim.state.jokerRight;
       if (sideRight === jokerRight) {
+        // if (sideRight) {
+        //   this.rightSrc = require(jokerRight
+        //     ? "@/assets/joker.png"
+        //     : "@/assets/card1.png");
+        // } else {
+        //   this.leftSrc = require(!jokerRight
+        //     ? "@/assets/joker.png"
+        //     : "@/assets/card1.png");
+        // }
         this.$whim.assignState({
           phase: "done",
-          winner: "drawer"
+          winner: "drawer",
+          selectedRight: sideRight
         });
       } else {
         this.$whim.assignState({
           phase: "done",
-          winner: "drawee"
+          winner: "drawee",
+          selectedRight: sideRight
         });
       }
     },
