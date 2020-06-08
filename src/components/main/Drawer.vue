@@ -4,11 +4,19 @@
       ジョーカーを選ぶな！
     </h2>
     <div>
-      <img src="@/assets/card.png" class="img" @click="select('left')" />
       <img
-        src="@/assets/card.png"
+        :src="leftSrc"
         class="img"
-        @click="select('right')"
+        @click="select(false)"
+        @mouseover="mouseoverLeft"
+        @mouseleave="mouseleaveLeft"
+      />
+      <img
+        :src="rightSrc"
+        class="img"
+        @click="select(true)"
+        @mouseover="mouseoverRight"
+        @mouseleave="mouseleaveRight"
       />
     </div>
   </div>
@@ -16,11 +24,42 @@
 <script>
 export default {
   name: "Drawer",
+  data() {
+    return {
+      leftSrc: require("@/assets/card.png"),
+      rightSrc: require("@/assets/card.png")
+    };
+  },
   methods: {
-    select(show) {
-      this.$whim.assignState({
-        [this.$whim.accessUser.id]: show
-      });
+    select(sideRight) {
+      const jokerRight = this.$whim.state.jokerRight;
+      if (sideRight === jokerRight) {
+        this.$whim.assignState({
+          phase: "done",
+          winner: "drawer"
+        });
+      } else {
+        this.$whim.assignState({
+          phase: "done",
+          winner: "drawee"
+        });
+      }
+    },
+    // mouseover時の処理
+    mouseoverLeft() {
+      this.leftSrc = require("@/assets/card_highlight.png");
+    },
+    // mouseleave時の処理
+    mouseleaveLeft() {
+      this.leftSrc = require("@/assets/card.png");
+    },
+    // mouseover時の処理
+    mouseoverRight() {
+      this.rightSrc = require("@/assets/card_highlight.png");
+    },
+    // mouseleave時の処理
+    mouseleaveRight() {
+      this.rightSrc = require("@/assets/card.png");
     }
   }
 };
