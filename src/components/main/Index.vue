@@ -11,7 +11,7 @@
 export default {
   name: "Main",
   components: {
-    Drawer: () => import("@/components/main/Drawer"),
+    Drawer: () => import("@/components/main/Drawer")
     // Drawee: () => import("@/components/main/Drawee")
   },
   computed: {
