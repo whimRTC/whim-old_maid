@@ -6,7 +6,7 @@
     <DrawerResult v-if="myRole === 'drawer' && phase === 'done'" class="me" />
     <a v-if="phase === 'done'" class="btn2" @click="reset">もう一度</a>
 
-    <!-- <Drawee v-if="myRole !== 'drawer'" class="me" /> -->
+    <Drawee v-if="myRole !== 'drawer' && phase === 'playing'" class="me" />
   </div>
 </template>
 <script>
@@ -14,8 +14,8 @@ export default {
   name: "Main",
   components: {
     Drawer: () => import("@/components/main/Drawer"),
-    DrawerResult: () => import("@/components/main/DrawerResult")
-    // Drawee: () => import("@/components/main/Drawee")
+    DrawerResult: () => import("@/components/main/DrawerResult"),
+    Drawee: () => import("@/components/main/Drawee")
   },
   computed: {
     users() {

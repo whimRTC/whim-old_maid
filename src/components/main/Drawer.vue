@@ -59,6 +59,9 @@ export default {
     // mouseover時の処理
     mouseoverLeft() {
       this.leftSrc = require("@/assets/card_highlight.png");
+      this.$whim.assignState({
+        mouseover: "left"
+      });
     },
     // mouseleave時の処理
     mouseleaveLeft() {
@@ -67,6 +70,9 @@ export default {
     // mouseover時の処理
     mouseoverRight() {
       this.rightSrc = require("@/assets/card_highlight.png");
+      this.$whim.assignState({
+        mouseover: "right"
+      });
     },
     // mouseleave時の処理
     mouseleaveRight() {
