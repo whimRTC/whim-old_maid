@@ -4,19 +4,17 @@
       ジョーカーを選ぶな！
     </h2>
     <div>
-      <img
-        :src="leftSrc"
+      <PlayingCard
+        cover
         class="img"
         @click="select(false)"
         @mouseover="mouseoverLeft"
-        @mouseleave="mouseleaveLeft"
       />
-      <img
-        :src="rightSrc"
+      <PlayingCard
+        cover
         class="img"
         @click="select(true)"
         @mouseover="mouseoverRight"
-        @mouseleave="mouseleaveRight"
       />
     </div>
   </div>
@@ -24,6 +22,9 @@
 <script>
 export default {
   name: "Drawer",
+  components: {
+    PlayingCard: () => import("@/components/PlayingCard")
+  },
   data() {
     return {
       leftSrc: require("@/assets/card.png"),
@@ -58,25 +59,15 @@ export default {
     },
     // mouseover時の処理
     mouseoverLeft() {
-      this.leftSrc = require("@/assets/card_highlight.png");
       this.$whim.assignState({
         mouseoverRight: false
       });
     },
-    // mouseleave時の処理
-    mouseleaveLeft() {
-      this.leftSrc = require("@/assets/card.png");
-    },
     // mouseover時の処理
     mouseoverRight() {
-      this.rightSrc = require("@/assets/card_highlight.png");
       this.$whim.assignState({
         mouseoverRight: true
       });
-    },
-    // mouseleave時の処理
-    mouseleaveRight() {
-      this.rightSrc = require("@/assets/card.png");
     }
   }
 };
@@ -84,7 +75,13 @@ export default {
 <style lang="scss" scoped>
 .img {
   width: 150px;
-
   max-width: 30vw;
+  &:hover {
+    border: solid;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border-width: 10px;
+    border-color: yellow;
+  }
 }
 </style>

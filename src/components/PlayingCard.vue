@@ -1,5 +1,5 @@
 <template>
-  <td>
+  <td @click="$emit('click')" @mouseover="$emit('mouseover')">
     <img
       src="@/assets/joker.png"
       v-if="signature === 'joker' && !cover"
