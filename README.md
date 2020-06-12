@@ -3,22 +3,25 @@
 ## 概要
 wh.im上でアプリを動かすときのVue.jsによるババ抜きです。
 
-## 使い方
-クローンし、remoteを変更します
-``` 
-git clone git@github.com:sally-inc/whim-template.git {app_name}
-cd {app_name}
-git remote set-url origin {your_url}
+## Project setup
+```
+yarn install
 ```
 
-## 起動
-``` 
-yarn
+### Compiles and hot-reloads for development
+```
 yarn serve
-``` 
+```
 
-## 起動(Docker)
+### Compiles and minifies for production
 ```
-docker build --tag app:latest . 
-docker run -it -v $PWD:/template -p 3001:3001 app:latest
+yarn build
 ```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
