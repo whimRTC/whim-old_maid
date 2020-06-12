@@ -4,28 +4,31 @@
       結果
     </h2>
     <div>
-      <img :src="leftSrc" class="img" />
-      <img :src="rightSrc" class="img" />
+      <PlayingCard :signature="leftSig" class="img" />
+      <PlayingCard :signature="rightSig" class="img" />
     </div>
   </div>
 </template>
 <script>
 export default {
   name: "DrawerResult",
+  components: {
+    PlayingCard: () => import("@/components/PlayingCard")
+  },
   computed: {
-    leftSrc() {
-      return require(!this.$whim.selectedRight
+    leftSig() {
+      return !this.$whim.selectedRight
         ? !this.$whim.jokerRight
-          ? "@/assets/joker.png"
-          : "@/assets/card1.png"
-        : "@/assets/card.png");
+          ? "joker"
+          : "as"
+        : null;
     },
-    rightSrc() {
-      return require(this.$whim.selectedRight
+    rightSig() {
+      return this.$whim.selectedRight
         ? this.$whim.jokerRight
-          ? "@/assets/joker.png"
-          : "@/assets/card1.png"
-        : "@/assets/card.png");
+          ? "joker"
+          : "as"
+        : null;
     },
     phase() {
       return this.$whim.state.phase;

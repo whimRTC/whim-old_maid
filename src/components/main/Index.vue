@@ -3,7 +3,7 @@
     <a v-if="!phase" class="btn" @click="beDrawer">引く方をやる</a>
     <!-- <a v-if="phase === 'beginning'" class="btn" @click="beDrawee">引かれる方をやる</a> -->
     <Drawer v-if="myRole === 'drawer' && phase === 'playing'" class="me" />
-    <DrawerResult v-if="myRole === 'drawer' && phase === 'done'" class="me" />
+    <DrawerResult v-if="phase === 'done'" class="me" />
     <a v-if="phase === 'done'" class="btn2" @click="reset">もう一度</a>
 
     <Drawee v-if="myRole !== 'drawer' && phase === 'playing'" class="me" />
