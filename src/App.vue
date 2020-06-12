@@ -7,7 +7,7 @@
 export default {
   name: "App",
   components: {
-    Main: () => import("@/components/main/Index"),
+    Main: () => import("@/components/main/Index")
   },
   // settings for debug
   // mounted() {
