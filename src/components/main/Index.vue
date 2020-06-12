@@ -6,7 +6,6 @@
     <Drawee v-if="myRole !== 'drawer' && phase === 'playing'" class="me" />
     <Result v-if="phase === 'done'" class="me" />
     <a v-if="phase === 'done'" class="btn2" @click="reset">もう一度</a>
-
   </div>
 </template>
 <script>
