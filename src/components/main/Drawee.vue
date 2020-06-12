@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="subtitle">
+    <h2 class="subtitle stroke">
       ジョーカーを選ばせろ！
     </h2>
     <div>
