@@ -5922,6 +5922,11 @@ pkg-up@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
+playing-card-signature@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/playing-card-signature/-/playing-card-signature-0.0.8.tgz#d182d93fda1ba727a85acc2ad4a75fce8fb09a20"
+  integrity sha512-WOx+DVFqCSOF11r7IHSzzeC3L2EzLw5kZfyZE0QHPkvqYlbumsNqXObXV2UjVhauNMGZ6+GVp5Eh+g5MIo64hg==
+
 pnp-webpack-plugin@^1.6.4:
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/pnp-webpack-plugin/-/pnp-webpack-plugin-1.6.4.tgz#c9711ac4dc48a685dabafc86f8b6dd9f8df84149"
@@ -7970,6 +7975,15 @@ vue-loader@^15.9.1:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-playing-card@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vue-playing-card/-/vue-playing-card-1.0.0.tgz#868c0f991c576d08281e9104471b9884bb7f12bb"
+  integrity sha512-tHwCzQSqvnBfFX5Tc64s7LGwsgxFJM1e010yQRk0D8pKjIJJDZ381tAhaml15T8J3f1rh7kUFIidHrjZGaDinQ==
+  dependencies:
+    core-js "^3.6.4"
+    playing-card-signature "^0.0.8"
+    vue "^2.6.11"
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"

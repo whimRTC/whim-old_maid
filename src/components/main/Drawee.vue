@@ -4,30 +4,36 @@
       ジョーカーを選ばせろ！
     </h2>
     <div>
-      <img :src="leftSrc" class="img" />
-      <img :src="rightSrc" class="img" />
+      <!-- <img :src="leftSrc" class="img" /> -->
+      <!-- <img :src="rightSrc" class="img" /> -->
+      <PlayingCard
+        :signature="leftSig"
+        class="img"
+        :class="{ border: !$whim.state.mouseoverRight }"
+      />
+      <PlayingCard
+        :signature="rightSig"
+        class="img"
+        :class="{ border: $whim.state.mouseoverRight }"
+      />
     </div>
   </div>
 </template>
 <script>
+// import VuePlayingCard from "vue-playing-card";
 export default {
   name: "Drawee",
+  components: {
+    PlayingCard: () => import("@/components/PlayingCard")
+  },
   computed: {
-    leftSrc() {
-      let src = !this.$whim.jokerRight
-        ? "../../assets/joker.png"
-        : "../../assets/card1.png";
-      if (!this.$whim.selectedRight)
-        src = src.replace(/\/(.*)\.png/g, "/$1_highlight.png");
-      return src;
+    leftSig() {
+      let sig = !this.$whim.jokerRight ? "joker" : "as";
+      return sig;
     },
-    rightSrc() {
-      let src = this.$whim.jokerRight
-        ? "../../assets/joker.png"
-        : "../../assets/card1.png";
-      if (this.$whim.selectedRight)
-        src = src.replace(/\/(.*)\.png/g, "/$1_highlight.png");
-      return src;
+    rightSig() {
+      let sig = this.$whim.jokerRight ? "joker" : "as";
+      return sig;
     },
     phase() {
       return this.$whim.state.phase;
@@ -40,5 +46,12 @@ export default {
   width: 150px;
 
   max-width: 30vw;
+}
+.border {
+  border: solid;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border-width: 10px;
+  border-color: yellow;
 }
 </style>
