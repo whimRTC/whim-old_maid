@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "site": "whim-old-maid",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
