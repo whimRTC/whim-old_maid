@@ -21,15 +21,11 @@
 </template>
 <script>
 import isMobile from "ismobilejs";
+const mobileOrTablet = isMobile(window.navigator).any;
 export default {
   name: "Drawer",
   components: {
     PlayingCard: () => import("@/components/PlayingCard")
-  },
-  data() {
-    return {
-      mobileOrTablet: isMobile.any
-    };
   },
   computed: {
     seeingLeft() {
@@ -41,10 +37,9 @@ export default {
   },
   methods: {
     select(sideRight) {
-      console.log(this.mobileOrTablet);
-      if (this.mobileOrTablet && this.$whim.state.seeingRight !== sideRight) {
+      if (mobileOrTablet && this.$whim.state.seeingRight !== sideRight) {
         this.$whim.assignState({
-          jjj: "jjj",
+          smartphone: true,
           seeingRight: sideRight
         });
         return;
