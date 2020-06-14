@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h2 class="subtitle stroke">
-      ジョーカーを選ぶな！{{mobileOrTablet}}
-    </h2>
+    <h2 class="subtitle stroke">ジョーカーを選ぶな！</h2>
     <div class="cards">
       <PlayingCard
         cover
@@ -64,15 +62,17 @@ export default {
     },
     // mouseover時の処理
     mouseoverLeft() {
-      this.$whim.assignState({
-        seeingRight: false
-      });
+      if (!mobileOrTablet)
+        this.$whim.assignState({
+          seeingRight: false
+        });
     },
     // mouseover時の処理
     mouseoverRight() {
-      this.$whim.assignState({
-        seeingRight: true
-      });
+      if (!mobileOrTablet)
+        this.$whim.assignState({
+          seeingRight: true
+        });
     }
   }
 };
