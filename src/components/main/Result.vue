@@ -3,9 +3,9 @@
     <h2 class="subtitle stroke">
       結果
     </h2>
-    <div>
-      <PlayingCard :signature="leftSig" class="img" />
-      <PlayingCard :signature="rightSig" class="img" />
+    <div align="center">
+      <PlayingCard :signature="leftSig" />
+      <PlayingCard :signature="rightSig" />
     </div>
   </div>
 </template>
@@ -36,10 +36,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.img {
-  width: 150px;
-
-  max-width: 30vw;
-}
-</style>
+<style lang="scss" scoped></style>

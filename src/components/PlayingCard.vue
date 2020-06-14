@@ -3,15 +3,21 @@
     <img
       src="@/assets/joker.png"
       v-if="signature === 'joker' && !cover"
-      :width="computedWidth"
-      :height="computedHeight"
+      :width="width"
+      :height="height"
     />
-    <vue-playing-card v-else :signature="signature" :cover="cover" />
+    <vue-playing-card
+      v-else
+      :signature="signature"
+      :cover="cover"
+      :width="width"
+      :height="height"
+    />
   </td>
 </template>
 <script>
-const DEFAULT_WIDTH = 200;
-const DEFAULT_HEIGHT = 280;
+const DEFAULT_WIDTH = 100;
+const DEFAULT_HEIGHT = 140;
 
 export default {
   name: "PlayingCard",
@@ -23,40 +29,27 @@ export default {
     cover: {
       default: false,
       type: Boolean
-    },
-    width: {
-      default: null,
-      type: [Number, String]
-    },
-    height: {
-      default: null,
-      type: [Number, String]
     }
+    // width: {
+    //   default: null,
+    //   type: [Number, String]
+    // },
+    // height: {
+    //   default: null,
+    //   type: [Number, String]
+    // }
   },
-  computed: {
-    computedWidth() {
-      let computedValue = parseInt(this.width, 10);
-      if (computedValue === 0 || Number.isNaN(computedValue)) {
-        if (this.height !== null) {
-          computedValue = this.height * (DEFAULT_WIDTH / DEFAULT_HEIGHT);
-        } else {
-          computedValue = DEFAULT_WIDTH; // no width or height is specified, use default width
-        }
-      }
-      return String(computedValue);
-    },
-    computedHeight() {
-      let computedValue = parseInt(this.height, 10);
-      if (computedValue === 0 || Number.isNaN(computedValue)) {
-        if (this.width !== null) {
-          computedValue = this.width * (DEFAULT_HEIGHT / DEFAULT_WIDTH);
-        } else {
-          computedValue = DEFAULT_HEIGHT; // no width or height is specified, use default height
-        }
-      }
-
-      return String(computedValue);
-    }
+  data() {
+    return {
+      width: window.innerWidth / 4,
+      height: (window.innerWidth / 4) * (DEFAULT_HEIGHT / DEFAULT_WIDTH)
+    };
+  },
+  mounted() {
+    window.addEventListener("resize", () => {
+      this.width = window.innerWidth / 4;
+      this.height = (window.innerWidth / 4) * (DEFAULT_HEIGHT / DEFAULT_WIDTH);
+    });
   }
 };
 </script>

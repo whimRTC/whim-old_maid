@@ -3,7 +3,7 @@
     <h2 class="subtitle stroke">
       ジョーカーを選ぶな！
     </h2>
-    <div>
+    <div align="center">
       <PlayingCard
         cover
         class="img"
@@ -74,8 +74,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .img {
-  width: 150px;
-  max-width: 30vw;
+  // width: 150px;
+  // max-width: 30vw;
   &:hover {
     border: solid;
     box-sizing: border-box;

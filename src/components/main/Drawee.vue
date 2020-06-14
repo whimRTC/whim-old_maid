@@ -3,17 +3,15 @@
     <h2 class="subtitle stroke">
       ジョーカーを選ばせろ！
     </h2>
-    <div>
+    <div align="center">
       <!-- <img :src="leftSrc" class="img" /> -->
       <!-- <img :src="rightSrc" class="img" /> -->
       <PlayingCard
         :signature="leftSig"
-        class="img"
         :class="{ border: !$whim.state.mouseoverRight }"
       />
       <PlayingCard
         :signature="rightSig"
-        class="img"
         :class="{ border: $whim.state.mouseoverRight }"
       />
     </div>
@@ -42,11 +40,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.img {
-  width: 150px;
-
-  max-width: 30vw;
-}
 .border {
   border: solid;
   box-sizing: border-box;
