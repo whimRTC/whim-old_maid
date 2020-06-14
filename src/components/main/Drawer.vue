@@ -48,6 +48,7 @@ export default {
         this.$whim.assignState({
           mouseoverRight: sideRight
         });
+        return;
       }
       const jokerRight = this.$whim.state.jokerRight;
       if (sideRight === jokerRight) {
