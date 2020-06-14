@@ -41,8 +41,10 @@ export default {
   },
   methods: {
     select(sideRight) {
+      console.log(this.mobileOrTablet);
       if (this.mobileOrTablet && this.$whim.state.seeingRight !== sideRight) {
         this.$whim.assignState({
+          jjj: "jjj",
           seeingRight: sideRight
         });
         return;
