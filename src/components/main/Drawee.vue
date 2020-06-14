@@ -39,12 +39,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.border {
-  border: solid;
-  box-sizing: border-box;
-  border-radius: 20px;
-  border-width: 10px;
-  border-color: yellow;
-}
-</style>
+<style lang="scss" scoped></style>

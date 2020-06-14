@@ -7,3 +7,10 @@ html * {
               0px 1px 0 #fff,  0-1px 0 #fff,
               -1px 0 0 #fff, 1px 0 0 #fff;
 }
+.border {
+  border: solid;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border-width: 10px;
+  border-color: yellow;
+}

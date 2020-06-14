@@ -6,13 +6,13 @@
     <div align="center">
       <PlayingCard
         cover
-        class="img"
+        :class="{ border: seeingLeft }"
         @click="select(false)"
         @mouseover="mouseoverLeft"
       />
       <PlayingCard
         cover
-        class="img"
+        :class="{ border: seeingRight }"
         @click="select(true)"
         @mouseover="mouseoverRight"
       />
@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+import isMobile from "ismobilejs";
 export default {
   name: "Drawer",
   components: {
@@ -27,23 +28,29 @@ export default {
   },
   data() {
     return {
-      leftSrc: require("@/assets/card.png"),
-      rightSrc: require("@/assets/card.png")
+      mobileOrTablet: isMobile.any
     };
+  },
+  computed: {
+    seeingLeft() {
+      return this.$whim.state.mouseoverRight === false;
+    },
+    seeingRight() {
+      return this.$whim.state.mouseoverRight === true;
+    }
   },
   methods: {
     select(sideRight) {
+      if (
+        this.mobileOrTablet &&
+        this.$whim.state.mouseoverRight !== sideRight
+      ) {
+        this.$whim.assignState({
+          mouseoverRight: sideRight
+        });
+      }
       const jokerRight = this.$whim.state.jokerRight;
       if (sideRight === jokerRight) {
-        // if (sideRight) {
-        //   this.rightSrc = require(jokerRight
-        //     ? "@/assets/joker.png"
-        //     : "@/assets/card1.png");
-        // } else {
-        //   this.leftSrc = require(!jokerRight
-        //     ? "@/assets/joker.png"
-        //     : "@/assets/card1.png");
-        // }
         this.$whim.assignState({
           phase: "done",
           winner: "drawer",
