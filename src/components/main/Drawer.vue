@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="subtitle stroke">
-      ジョーカーを選ぶな！
+      ジョーカーを選ぶな！{{mobileOrTablet}}
     </h2>
     <div class="cards">
       <PlayingCard
@@ -33,6 +33,9 @@ export default {
     },
     seeingRight() {
       return this.$whim.state.seeingRight === true;
+    },
+    mobileOrTablet() {
+      return mobileOrTablet;
     }
   },
   methods: {
