@@ -3,7 +3,7 @@
     <h2 class="subtitle stroke">
       ジョーカーを選ぶな！
     </h2>
-    <div align="center">
+    <div class="cards">
       <PlayingCard
         cover
         :class="{ border: seeingLeft }"

@@ -3,7 +3,7 @@
     <h2 class="subtitle stroke">
       ジョーカーを選ばせろ！
     </h2>
-    <div align="center">
+    <div class="cards">
       <!-- <img :src="leftSrc" class="img" /> -->
       <!-- <img :src="rightSrc" class="img" /> -->
       <PlayingCard
@@ -26,12 +26,10 @@ export default {
   },
   computed: {
     leftSig() {
-      let sig = !this.$whim.jokerRight ? "joker" : "as";
-      return sig;
+      return !this.$whim.state.jokerRight ? "joker" : "as";
     },
     rightSig() {
-      let sig = this.$whim.jokerRight ? "joker" : "as";
-      return sig;
+      return this.$whim.state.jokerRight ? "joker" : "as";
     },
     phase() {
       return this.$whim.state.phase;

@@ -3,7 +3,7 @@
     <h2 class="subtitle stroke">
       結果
     </h2>
-    <div align="center">
+    <div class="cards">
       <PlayingCard :signature="leftSig" />
       <PlayingCard :signature="rightSig" />
     </div>
@@ -17,15 +17,15 @@ export default {
   },
   computed: {
     leftSig() {
-      return !this.$whim.selectedRight
-        ? !this.$whim.jokerRight
+      return !this.$whim.state.selectedRight
+        ? !this.$whim.state.jokerRight
           ? "joker"
           : "as"
         : null;
     },
     rightSig() {
-      return this.$whim.selectedRight
-        ? this.$whim.jokerRight
+      return this.$whim.state.selectedRight
+        ? this.$whim.state.jokerRight
           ? "joker"
           : "as"
         : null;

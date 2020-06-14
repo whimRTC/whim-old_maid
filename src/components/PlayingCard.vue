@@ -1,5 +1,5 @@
 <template>
-  <td @click="$emit('click')" @mouseover="$emit('mouseover')">
+  <div @click="$emit('click')" @mouseover="$emit('mouseover')">
     <img
       src="@/assets/joker.png"
       v-if="signature === 'joker' && !cover"
@@ -13,7 +13,7 @@
       :width="width"
       :height="height"
     />
-  </td>
+  </div>
 </template>
 <script>
 const DEFAULT_WIDTH = 100;
