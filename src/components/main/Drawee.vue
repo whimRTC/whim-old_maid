@@ -8,11 +8,11 @@
       <!-- <img :src="rightSrc" class="img" /> -->
       <PlayingCard
         :signature="leftSig"
-        :class="{ border: !$whim.state.mouseoverRight }"
+        :class="{ border: !$whim.state.seeingRight }"
       />
       <PlayingCard
         :signature="rightSig"
-        :class="{ border: $whim.state.mouseoverRight }"
+        :class="{ border: $whim.state.seeingRight }"
       />
     </div>
   </div>

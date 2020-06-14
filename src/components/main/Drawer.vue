@@ -33,20 +33,17 @@ export default {
   },
   computed: {
     seeingLeft() {
-      return this.$whim.state.mouseoverRight === false;
+      return this.$whim.state.seeingRight === false;
     },
     seeingRight() {
-      return this.$whim.state.mouseoverRight === true;
+      return this.$whim.state.seeingRight === true;
     }
   },
   methods: {
     select(sideRight) {
-      if (
-        this.mobileOrTablet &&
-        this.$whim.state.mouseoverRight !== sideRight
-      ) {
+      if (this.mobileOrTablet && this.$whim.state.seeingRight !== sideRight) {
         this.$whim.assignState({
-          mouseoverRight: sideRight
+          seeingRight: sideRight
         });
         return;
       }
@@ -68,13 +65,13 @@ export default {
     // mouseover時の処理
     mouseoverLeft() {
       this.$whim.assignState({
-        mouseoverRight: false
+        seeingRight: false
       });
     },
     // mouseover時の処理
     mouseoverRight() {
       this.$whim.assignState({
-        mouseoverRight: true
+        seeingRight: true
       });
     }
   }
