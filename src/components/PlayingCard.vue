@@ -5,6 +5,7 @@
       v-if="signature === 'joker' && !cover"
       :width="width"
       :height="height"
+      class="card"
     />
     <vue-playing-card
       v-else
@@ -12,12 +13,13 @@
       :cover="cover"
       :width="width"
       :height="height"
+      class="card"
     />
   </div>
 </template>
 <script>
-const DEFAULT_WIDTH = 100;
-const DEFAULT_HEIGHT = 140;
+const DEFAULT_WIDTH = 180;
+const DEFAULT_HEIGHT = DEFAULT_WIDTH * 1.4;
 
 export default {
   name: "PlayingCard",
@@ -40,16 +42,22 @@ export default {
     // }
   },
   data() {
+    const width = Math.min(window.innerWidth / 4, DEFAULT_WIDTH);
     return {
-      width: window.innerWidth / 4,
-      height: (window.innerWidth / 4) * (DEFAULT_HEIGHT / DEFAULT_WIDTH)
+      width: width,
+      height: width * (DEFAULT_HEIGHT / DEFAULT_WIDTH)
     };
   },
   mounted() {
     window.addEventListener("resize", () => {
-      this.width = window.innerWidth / 4;
-      this.height = (window.innerWidth / 4) * (DEFAULT_HEIGHT / DEFAULT_WIDTH);
+      this.width = Math.min(window.innerWidth / 4, DEFAULT_WIDTH);
+      this.height = this.width * (DEFAULT_HEIGHT / DEFAULT_WIDTH);
     });
   }
 };
 </script>
+<style lang="scss" scoped>
+.card {
+  opacity: 0.8;
+}
+</style>
