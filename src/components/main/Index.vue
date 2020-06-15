@@ -48,7 +48,7 @@ export default {
 <style lang="scss" scoped>
 .btn {
   display: block;
-  background-color: #ffc605;
+  background-color: #05b0ff;
   color: #fff;
   padding: 0.8em;
   text-decoration: none;

@@ -5,17 +5,24 @@
       <PlayingCard
         cover
         :seeing="seeingLeft"
-        @click="select(false)"
+        @click="preselect(false)"
         @mouseover="mouseoverLeft"
         @mouseleave="mouseleave"
       />
       <PlayingCard
         cover
         :seeing="seeingRight"
-        @click="select(true)"
+        @click="preselect(true)"
         @mouseover="mouseoverRight"
         @mouseleave="mouseleave"
       />
+    </div>
+    <div class="selecting-container" v-if="selected !== null">
+      <h2>そっちで大丈夫?</h2>
+      <div class="answer">
+        <p class="answer-yes" @click="select(selected)">十分考えた</p>
+        <p class="answer-no" @click="selected = null">選び直す</p>
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +31,11 @@ import isMobile from "ismobilejs";
 const mobileOrTablet = isMobile(window.navigator).any;
 export default {
   name: "Drawer",
+  data: function() {
+    return {
+      selected: null
+    };
+  },
   components: {
     PlayingCard: () => import("@/components/PlayingCard")
   },
@@ -36,7 +48,7 @@ export default {
     }
   },
   methods: {
-    select(sideRight) {
+    preselect(sideRight) {
       if (mobileOrTablet && this.$whim.state.seeingRight !== sideRight) {
         this.$whim.assignState({
           smartphone: true,
@@ -44,6 +56,9 @@ export default {
         });
         return;
       }
+      this.selected = sideRight;
+    },
+    select(sideRight) {
       const jokerRight = this.$whim.state.jokerRight;
       if (sideRight === jokerRight) {
         this.$whim.assignState({
@@ -83,15 +98,35 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.img {
-  // width: 150px;
-  // max-width: 30vw;
-  &:hover {
-    border: solid;
-    box-sizing: border-box;
-    border-radius: 20px;
-    border-width: 10px;
-    border-color: yellow;
+.selecting-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffffe0;
+  border: solid;
+  border-color: #ffffffe0;
+  border-radius: 10px;
+  border-width: 0;
+  padding: 20px;
+  text-align: center;
+}
+.answer {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  .answer-yes {
+    color: white;
+    background-color: #05b0ff;
+    border-radius: 4px;
+    padding: 15px 40px;
+    margin-right: 20px;
+  }
+  .answer-no {
+    color: white;
+    background-color: rgb(253, 83, 5);
+    border-radius: 4px;
+    padding: 15px 40px;
   }
 }
 </style>
