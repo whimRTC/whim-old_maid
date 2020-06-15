@@ -7,12 +7,14 @@
         :class="{ border: seeingLeft }"
         @click="select(false)"
         @mouseover="mouseoverLeft"
+        @mouseleave="mouseleave"
       />
       <PlayingCard
         cover
         :class="{ border: seeingRight }"
         @click="select(true)"
         @mouseover="mouseoverRight"
+        @mouseleave="mouseleave"
       />
     </div>
   </div>
@@ -31,9 +33,6 @@ export default {
     },
     seeingRight() {
       return this.$whim.state.seeingRight === true;
-    },
-    mobileOrTablet() {
-      return mobileOrTablet;
     }
   },
   methods: {
@@ -72,6 +71,12 @@ export default {
       if (!mobileOrTablet)
         this.$whim.assignState({
           seeingRight: true
+        });
+    },
+    mouseleave() {
+      if (!mobileOrTablet)
+        this.$whim.assignState({
+          seeingRight: null
         });
     }
   }
