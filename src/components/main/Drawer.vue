@@ -4,14 +4,14 @@
     <div class="cards">
       <PlayingCard
         cover
-        :class="{ border: seeingLeft }"
+        :seeing="seeingLeft"
         @click="select(false)"
         @mouseover="mouseoverLeft"
         @mouseleave="mouseleave"
       />
       <PlayingCard
         cover
-        :class="{ border: seeingRight }"
+        :seeing="seeingRight"
         @click="select(true)"
         @mouseover="mouseoverRight"
         @mouseleave="mouseleave"

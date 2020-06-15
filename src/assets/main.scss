@@ -7,23 +7,6 @@ html * {
               0px 1px 0 #fff,  0-1px 0 #fff,
               -1px 0 0 #fff, 1px 0 0 #fff;
 }
-.border {
-  position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    border: solid;
-    border-radius: 7px;
-    border-width: 10px;
-    border-color: #ffff00e0;
-  }
-} 
 .cards {
   display: flex;
   justify-content: center;

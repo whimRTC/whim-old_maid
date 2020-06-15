@@ -4,21 +4,24 @@
     @mouseover="$emit('mouseover')"
     @mouseleave="$emit('mouseleave')"
   >
-    <img
-      src="@/assets/joker.svg"
-      v-if="signature === 'joker' && !cover"
-      :width="width"
-      :height="height"
-      class="card"
-    />
-    <vue-playing-card
-      v-else
-      :signature="signature"
-      :cover="cover"
-      :width="width"
-      :height="height"
-      class="card"
-    />
+    <div :class="{ border: seeing }">
+      <img
+        src="@/assets/joker.svg"
+        v-if="signature === 'joker' && !cover"
+        :width="width"
+        :height="height"
+        class="card"
+      />
+      <vue-playing-card
+        v-else
+        :signature="signature"
+        :cover="cover"
+        :width="width"
+        :height="height"
+        class="card"
+      />
+    </div>
+    <img src="@/assets/hand.svg" class="hand" :class="{ invisible: !seeing }" />
   </div>
 </template>
 <script>
@@ -35,15 +38,11 @@ export default {
     cover: {
       default: false,
       type: Boolean
+    },
+    seeing: {
+      default: false,
+      type: Boolean
     }
-    // width: {
-    //   default: null,
-    //   type: [Number, String]
-    // },
-    // height: {
-    //   default: null,
-    //   type: [Number, String]
-    // }
   },
   data() {
     const width = Math.min(window.innerWidth / 4, DEFAULT_WIDTH);
@@ -63,5 +62,30 @@ export default {
 <style lang="scss" scoped>
 .card {
   opacity: 0.8;
+}
+.hand {
+  width: 20vw;
+  max-width: 100px;
+  transform: rotate(90deg);
+}
+.invisible {
+  opacity: 0;
+}
+.border {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: solid;
+    border-radius: 7px;
+    border-width: 10px;
+    border-color: #ffff00e0;
+  }
 }
 </style>
