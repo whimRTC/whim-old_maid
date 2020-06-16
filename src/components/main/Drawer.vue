@@ -17,11 +17,13 @@
         @mouseleave="mouseleave"
       />
     </div>
-    <div class="selecting-container" v-if="selected !== null">
-      <h2>そっちで大丈夫?</h2>
-      <div class="answer">
-        <p class="answer-yes" @click="select(selected)">十分考えた</p>
-        <p class="answer-no" @click="selected = null">選び直す</p>
+    <div class="fulloverlay" v-if="selected !== null">
+      <div class="selecting-container">
+        <h2>そっちで大丈夫?</h2>
+        <div class="answer">
+          <p class="answer-yes" @click="select(selected)">これにする</p>
+          <p class="answer-no" @click="selected = null">選び直す</p>
+        </div>
       </div>
     </div>
   </div>
@@ -51,11 +53,13 @@ export default {
     preselect(sideRight) {
       if (mobileOrTablet && this.$whim.state.seeingRight !== sideRight) {
         this.$whim.assignState({
-          smartphone: true,
           seeingRight: sideRight
         });
         return;
       }
+      this.$whim.assignState({
+        seeingRight: sideRight
+      });
       this.selected = sideRight;
     },
     select(sideRight) {
@@ -89,7 +93,7 @@ export default {
         });
     },
     mouseleave() {
-      if (!mobileOrTablet)
+      if (!mobileOrTablet && this.selected === null)
         this.$whim.assignState({
           seeingRight: null
         });
@@ -119,14 +123,22 @@ export default {
     color: white;
     background-color: #05b0ff;
     border-radius: 4px;
-    padding: 15px 40px;
+    padding: 15px 10px;
     margin-right: 20px;
   }
   .answer-no {
     color: white;
     background-color: rgb(253, 83, 5);
     border-radius: 4px;
-    padding: 15px 40px;
+    padding: 15px 10px;
   }
+}
+.fulloverlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2147483647;
 }
 </style>
