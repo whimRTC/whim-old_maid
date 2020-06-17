@@ -9,12 +9,6 @@ Vue.config.productionTip = false;
 Vue.use(whimClientVue);
 Vue.use(VuePlayingCard);
 
-Vue.prototype.$sendSE = () => {
-  Vue.prototype.$whim.assignState({
-    sound: true
-  });
-};
-
 new Vue({
   render: h => h(App)
 }).$mount("#app");
