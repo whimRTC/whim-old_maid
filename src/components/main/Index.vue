@@ -9,6 +9,9 @@
   </div>
 </template>
 <script>
+import { Howl } from "howler";
+const SE = new Howl({ src: require("@/assets/jump02.mp3") });
+SE.volume(0.03);
 export default {
   name: "Main",
   components: {
@@ -28,6 +31,9 @@ export default {
     },
     isAccessUserSelected() {
       return !!this.$whim.state[this.$whim.accessUser.id];
+    },
+    sound() {
+      return this.$whim.state.sound;
     }
   },
   methods: {
@@ -36,10 +42,21 @@ export default {
     },
     beDrawer() {
       this.$whim.assignState({
+        sound: true,
         phase: "playing",
         [this.$whim.accessUser.id]: "drawer",
         jokerRight: Math.random() < 0.5
       });
+    }
+  },
+  watch: {
+    sound: function(newSound) {
+      if (newSound) {
+        SE.play();
+        this.$whim.assignState({
+          sound: null
+        });
+      }
     }
   }
 };

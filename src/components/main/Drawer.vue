@@ -22,7 +22,7 @@
         <h2>そっちで大丈夫?</h2>
         <div class="answer">
           <p class="answer-yes" @click="select(selected)">これにする</p>
-          <p class="answer-no" @click="selected = null">選び直す</p>
+          <p class="answer-no" @click="quitSelect">選び直す</p>
         </div>
       </div>
     </div>
@@ -58,6 +58,7 @@ export default {
         return;
       }
       this.$whim.assignState({
+        sound: true,
         seeingRight: sideRight
       });
       this.selected = sideRight;
@@ -66,12 +67,14 @@ export default {
       const jokerRight = this.$whim.state.jokerRight;
       if (sideRight === jokerRight) {
         this.$whim.assignState({
+          sound: true,
           phase: "done",
           winner: "drawer",
           selectedRight: sideRight
         });
       } else {
         this.$whim.assignState({
+          sound: true,
           phase: "done",
           winner: "drawee",
           selectedRight: sideRight
@@ -97,6 +100,12 @@ export default {
         this.$whim.assignState({
           seeingRight: null
         });
+    },
+    quitSelect() {
+      // this.$whim.assignState({
+      //   sound: true
+      // });
+      this.selected = null;
     }
   }
 };
